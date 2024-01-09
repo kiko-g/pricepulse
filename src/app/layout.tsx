@@ -23,8 +23,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={clsx("h-full bg-gray-50 antialiased dark:bg-neutral-800", inter.variable)}>
-      <body className="flex h-full flex-col">
+    <html lang="en" className={clsx("h-full antialiased", inter.variable)} suppressHydrationWarning>
+      <body className="flex h-full flex-col bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-white">
         <Providers>
           <div className="flex min-h-full flex-col">
             <Layout>{children}</Layout>

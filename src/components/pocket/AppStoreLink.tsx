@@ -7,8 +7,10 @@ export function AppStoreLink({ color = "black" }: { color?: "black" | "white" })
       href="#"
       aria-label="Download on the App Store"
       className={clsx(
-        "rounded-lg transition-colors",
-        color === "black" ? "bg-gray-800 text-white hover:bg-gray-900" : "bg-white text-gray-900 hover:bg-gray-50",
+        "rounded-lg transition-all hover:opacity-80",
+        color === "black"
+          ? "bg-gray-800 text-white hover:bg-gray-900 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-50"
+          : "bg-white text-gray-900 hover:bg-gray-50 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-900",
       )}
     >
       <svg viewBox="0 0 120 40" aria-hidden="true" className="h-10">
