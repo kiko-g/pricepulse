@@ -133,7 +133,7 @@ export function Header() {
             <Button href="/login" variant="outline" className="hidden lg:block">
               Log in
             </Button>
-            <Button href="#" className="hidden lg:block">
+            <Button href="#" color="gray" className="hidden lg:block">
               Download
             </Button>
           </div>

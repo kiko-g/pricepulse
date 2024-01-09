@@ -16,7 +16,7 @@ export default function Register() {
       subtitle={
         <>
           Already registered?{' '}
-          <Link href="/login" className="text-cyan-600">
+          <Link href="/login" className="text-teal-600">
             Sign in
           </Link>{' '}
           to your account.
@@ -66,7 +66,7 @@ export default function Register() {
             <option>The “Never Use This” podcast</option>
           </SelectField>
         </div>
-        <Button type="submit" color="cyan" className="mt-8 w-full">
+        <Button type="submit" color="teal" className="mt-8 w-full">
           Get started today
         </Button>
       </form>

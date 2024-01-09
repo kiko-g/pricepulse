@@ -191,6 +191,11 @@ type ScreenProps =
   | { animated?: false }
 
 function InviteScreen(props: ScreenProps) {
+  const info = [
+    { label: 'Full name', value: 'Albert H. Wiggin' },
+    { label: 'Email address', value: 'awiggin@chase.com' },
+  ]
+
   return (
     <AppScreen className="w-full">
       <MotionAppScreenHeader {...(props.animated ? headerAnimation : {})}>
@@ -205,10 +210,7 @@ function InviteScreen(props: ScreenProps) {
       >
         <div className="px-4 py-6">
           <div className="space-y-6">
-            {[
-              { label: 'Full name', value: 'Albert H. Wiggin' },
-              { label: 'Email address', value: 'awiggin@chase.com' },
-            ].map((field) => (
+            {info.map((field) => (
               <div key={field.label}>
                 <div className="text-sm text-gray-500">{field.label}</div>
                 <div className="mt-2 border-b border-gray-200 pb-2 text-sm text-gray-900">
@@ -217,7 +219,7 @@ function InviteScreen(props: ScreenProps) {
               </div>
             ))}
           </div>
-          <div className="mt-6 rounded-lg bg-cyan-500 px-3 py-2 text-center text-sm font-semibold text-white">
+          <div className="mt-6 rounded-lg bg-teal-500 px-3 py-2 text-center text-sm font-semibold text-white">
             Invite person
           </div>
         </div>
@@ -227,6 +229,65 @@ function InviteScreen(props: ScreenProps) {
 }
 
 function StocksScreen(props: ScreenProps) {
+  const enterprises = [
+    {
+      name: 'Laravel',
+      price: '4,098.01',
+      change: '+4.98%',
+      color: '#F9322C',
+      logo: LaravelLogo,
+    },
+    {
+      name: 'Tuple',
+      price: '5,451.10',
+      change: '-3.38%',
+      color: '#5A67D8',
+      logo: TupleLogo,
+    },
+    {
+      name: 'Transistor',
+      price: '4,098.41',
+      change: '+6.25%',
+      color: '#2A5B94',
+      logo: TransistorLogo,
+    },
+    {
+      name: 'Diageo',
+      price: '250.65',
+      change: '+1.25%',
+      color: '#3320A7',
+      logo: DiageoLogo,
+    },
+    {
+      name: 'StaticKit',
+      price: '250.65',
+      change: '-3.38%',
+      color: '#2A3034',
+      logo: StaticKitLogo,
+    },
+    {
+      name: 'Statamic',
+      price: '5,040.85',
+      change: '-3.11%',
+      color: '#0EA5E9',
+      logo: StatamicLogo,
+    },
+    {
+      name: 'Mirage',
+      price: '140.44',
+      change: '+9.09%',
+      color: '#16A34A',
+      logo: MirageLogo,
+    },
+    {
+      name: 'Reversable',
+      price: '550.60',
+      change: '-1.25%',
+      color: '#8D8D8D',
+      logo: ReversableLogo,
+    },
+  ]
+
   return (
     <AppScreen className="w-full">
       <MotionAppScreenHeader {...(props.animated ? headerAnimation : {})}>
@@ -237,64 +298,7 @@ function StocksScreen(props: ScreenProps) {
         {...(props.animated ? { ...bodyAnimation, custom: props.custom } : {})}
       >
         <div className="divide-y divide-gray-100">
-          {[
-            {
-              name: 'Laravel',
-              price: '4,098.01',
-              change: '+4.98%',
-              color: '#F9322C',
-              logo: LaravelLogo,
-            },
-            {
-              name: 'Tuple',
-              price: '5,451.10',
-              change: '-3.38%',
-              color: '#5A67D8',
-              logo: TupleLogo,
-            },
-            {
-              name: 'Transistor',
-              price: '4,098.41',
-              change: '+6.25%',
-              color: '#2A5B94',
-              logo: TransistorLogo,
-            },
-            {
-              name: 'Diageo',
-              price: '250.65',
-              change: '+1.25%',
-              color: '#3320A7',
-              logo: DiageoLogo,
-            },
-            {
-              name: 'StaticKit',
-              price: '250.65',
-              change: '-3.38%',
-              color: '#2A3034',
-              logo: StaticKitLogo,
-            },
-            {
-              name: 'Statamic',
-              price: '5,040.85',
-              change: '-3.11%',
-              color: '#0EA5E9',
-              logo: StatamicLogo,
-            },
-            {
-              name: 'Mirage',
-              price: '140.44',
-              change: '+9.09%',
-              color: '#16A34A',
-              logo: MirageLogo,
-            },
-            {
-              name: 'Reversable',
-              price: '550.60',
-              change: '-1.25%',
-              color: '#8D8D8D',
-              logo: ReversableLogo,
-            },
-          ].map((stock) => (
+          {enterprises.map((stock) => (
             <div key={stock.name} className="flex items-center gap-4 px-4 py-3">
               <div
                 className="flex-none rounded-full"
@@ -313,7 +317,7 @@ function StocksScreen(props: ScreenProps) {
                   className={clsx(
                     'text-xs leading-5',
                     stock.change.startsWith('+')
-                      ? 'text-cyan-500'
+                      ? 'text-teal-500'
                       : 'text-gray-500',
                   )}
                 >
@@ -352,7 +356,7 @@ function InvestScreen(props: ScreenProps) {
                     <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6">
                       <path
                         d="M17 15V7H9M17 7 7 17"
-                        stroke="#06B6D4"
+                        stroke="#14b8a6"
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -373,7 +377,7 @@ function InvestScreen(props: ScreenProps) {
                 </div>
               </div>
             ))}
-            <div className="rounded-lg bg-cyan-500 px-3 py-2 text-center text-sm font-semibold text-white">
+            <div className="rounded-lg bg-teal-500 px-3 py-2 text-center text-sm font-semibold text-white">
               Buy shares
             </div>
           </div>
@@ -446,7 +450,7 @@ function FeaturesDesktop() {
       </Tab.List>
       <div className="relative col-span-6">
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <CircleBackground color="#13B5C8" className="animate-spin-slower" />
+          <CircleBackground color="#14b8a6" className="animate-spin-slower" />
         </div>
         <PhoneFrame className="z-10 mx-auto w-full max-w-[366px]">
           <Tab.Panels as={Fragment}>

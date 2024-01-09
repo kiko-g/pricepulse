@@ -142,7 +142,7 @@ function FindProduct({
               onClick={() => setProductUrl('')}
             >
               <TrashIcon
-                className="h-5 w-5 text-rose-600 transition hover:opacity-70"
+                className="h-5 w-5 text-gray-700 transition hover:opacity-70"
                 aria-hidden="true"
               />
             </button>
