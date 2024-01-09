@@ -1,14 +1,14 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from "next/image"
+import Link from "next/link"
 
-import { Button } from '@/components/Button'
-import { Container } from '@/components/Container'
-import { TextField } from '@/components/Fields'
-import { Logomark } from '@/components/Logo'
-import { NavLinks } from '@/components/NavLinks'
-import qrCode from '@/images/qr-code.svg'
+import { Button } from "@/components/Button"
+import { Container } from "@/components/Container"
+import { TextField } from "@/components/Fields"
+import { Logomark } from "@/components/Logo"
+import { NavLinks } from "@/components/NavLinks"
+import qrCode from "@/images/qr-code.svg"
 
-function QrCodeBorder(props: React.ComponentPropsWithoutRef<'svg'>) {
+function QrCodeBorder(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg viewBox="0 0 96 96" fill="none" aria-hidden="true" {...props}>
       <path
@@ -49,9 +49,7 @@ export function Footer() {
                   Download the app
                 </Link>
               </p>
-              <p className="mt-1 text-sm text-gray-700">
-                Scan the QR code to download the app from the App Store.
-              </p>
+              <p className="mt-1 text-sm text-gray-700">Scan the QR code to download the app from the App Store.</p>
             </div>
           </div>
         </div>

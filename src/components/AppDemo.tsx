@@ -1,15 +1,14 @@
-'use client'
+"use client"
 
-import { useId, useRef, useState } from 'react'
-import clsx from 'clsx'
-import { motion, useInView, useMotionValue } from 'framer-motion'
+import { useId, useRef, useState } from "react"
+import clsx from "clsx"
+import { motion, useInView, useMotionValue } from "framer-motion"
 
-import { AppScreen } from '@/components/AppScreen'
+import { AppScreen } from "@/components/AppScreen"
 
 const prices = [
-  997.56, 944.34, 972.25, 832.4, 888.76, 834.8, 805.56, 767.38, 861.21, 669.6,
-  694.39, 721.32, 694.03, 610.1, 502.2, 549.56, 611.03, 583.4, 610.14, 660.6,
-  752.11, 721.19, 638.89, 661.7, 694.51, 580.3, 638.0, 613.3, 651.64, 560.51,
+  997.56, 944.34, 972.25, 832.4, 888.76, 834.8, 805.56, 767.38, 861.21, 669.6, 694.39, 721.32, 694.03, 610.1, 502.2,
+  549.56, 611.03, 583.4, 610.14, 660.6, 752.11, 721.19, 638.89, 661.7, 694.51, 580.3, 638.0, 613.3, 651.64, 560.51,
   611.45, 670.68, 752.56,
 ]
 const maxPrice = Math.max(...prices)
@@ -25,7 +24,7 @@ function Chart({
   paddingY = 0,
   gridLines = 6,
   ...props
-}: React.ComponentPropsWithoutRef<'svg'> & {
+}: React.ComponentPropsWithoutRef<"svg"> & {
   activePointIndex: number | null
   onChangeActivePointIndex: (index: number | null) => void
   width: number
@@ -38,29 +37,27 @@ function Chart({
   let height = totalHeight - paddingY * 2
 
   let id = useId()
-  let svgRef = useRef<React.ElementRef<'svg'>>(null)
-  let pathRef = useRef<React.ElementRef<'path'>>(null)
+  let svgRef = useRef<React.ElementRef<"svg">>(null)
+  let pathRef = useRef<React.ElementRef<"path">>(null)
   let isInView = useInView(svgRef, { amount: 0.5, once: true })
   let pathWidth = useMotionValue(0)
   let [interactionEnabled, setInteractionEnabled] = useState(false)
 
-  let path = ''
+  let path = ""
   let points: Array<{ x: number; y: number }> = []
 
   for (let index = 0; index < prices.length; index++) {
     let x = paddingX + (index / (prices.length - 1)) * width
-    let y =
-      paddingY +
-      (1 - (prices[index] - minPrice) / (maxPrice - minPrice)) * height
+    let y = paddingY + (1 - (prices[index] - minPrice) / (maxPrice - minPrice)) * height
     points.push({ x, y })
-    path += `${index === 0 ? 'M' : 'L'} ${x.toFixed(4)} ${y.toFixed(4)}`
+    path += `${index === 0 ? "M" : "L"} ${x.toFixed(4)} ${y.toFixed(4)}`
   }
 
   return (
     <svg
       ref={svgRef}
       viewBox={`0 0 ${totalWidth} ${totalHeight}`}
-      className={clsx(className, 'overflow-visible')}
+      className={clsx(className, "overflow-visible")}
       {...(interactionEnabled
         ? {
             onPointerLeave: () => onChangeActivePointIndex(null),
@@ -68,11 +65,7 @@ function Chart({
               let x = event.nativeEvent.offsetX
               let closestPointIndex: number | null = null
               let closestDistance = Infinity
-              for (
-                let pointIndex = 0;
-                pointIndex < points.length;
-                pointIndex++
-              ) {
+              for (let pointIndex = 0; pointIndex < points.length; pointIndex++) {
                 let point = points[pointIndex]
                 let distance = Math.abs(point.x - x)
                 if (distance < closestDistance) {
@@ -125,14 +118,10 @@ function Chart({
         strokeLinejoin="round"
         initial={{ pathLength: 0 }}
         transition={{ duration: 1 }}
-        {...(isInView ? { stroke: '#14b8a6', animate: { pathLength: 1 } } : {})}
+        {...(isInView ? { stroke: "#14b8a6", animate: { pathLength: 1 } } : {})}
         onUpdate={({ pathLength }) => {
-          if (pathRef.current && typeof pathLength === 'number') {
-            pathWidth.set(
-              pathRef.current.getPointAtLength(
-                pathLength * pathRef.current.getTotalLength(),
-              ).x,
-            )
+          if (pathRef.current && typeof pathLength === "number") {
+            pathWidth.set(pathRef.current.getPointAtLength(pathLength * pathRef.current.getTotalLength()).x)
           }
         }}
         onAnimationComplete={() => setInteractionEnabled(true)}
@@ -166,19 +155,14 @@ export function AppDemo() {
   let activePriceIndex = activePointIndex ?? prices.length - 1
   let activeValue = prices[activePriceIndex]
   let previousValue = prices[activePriceIndex - 1]
-  let percentageChange =
-    activePriceIndex === 0
-      ? null
-      : ((activeValue - previousValue) / previousValue) * 100
+  let percentageChange = activePriceIndex === 0 ? null : ((activeValue - previousValue) / previousValue) * 100
 
   return (
     <AppScreen>
       <AppScreen.Body>
         <div className="p-4">
           <div className="flex gap-2">
-            <div className="text-xs leading-6 text-gray-500">
-              Tailwind Labs, Inc.
-            </div>
+            <div className="text-xs leading-6 text-gray-500">Tailwind Labs, Inc.</div>
             <div className="text-sm text-gray-900">$CSS</div>
             <svg viewBox="0 0 24 24" className="ml-auto h-6 w-6" fill="none">
               <path
@@ -192,20 +176,16 @@ export function AppDemo() {
           </div>
           <div className="mt-3 border-t border-gray-200 pt-5">
             <div className="flex items-baseline gap-2">
-              <div className="text-2xl tabular-nums tracking-tight text-gray-900">
-                {activeValue.toFixed(2)}
-              </div>
+              <div className="text-2xl tabular-nums tracking-tight text-gray-900">{activeValue.toFixed(2)}</div>
               <div className="text-sm text-gray-900">USD</div>
               {percentageChange && (
                 <div
                   className={clsx(
-                    'ml-auto text-sm tabular-nums tracking-tight',
-                    percentageChange >= 0
-                      ? 'text-emerald-500'
-                      : 'text-gray-500',
+                    "ml-auto text-sm tabular-nums tracking-tight",
+                    percentageChange >= 0 ? "text-emerald-500" : "text-gray-500",
                   )}
                 >
-                  {percentageChange >= 0 ? '+' : ''}
+                  {percentageChange >= 0 ? "+" : ""}
                   {percentageChange.toFixed(2)}%
                 </div>
               )}

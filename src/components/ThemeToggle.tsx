@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
-import { useTheme } from 'next-themes'
+import { useEffect, useState } from "react"
+import { useTheme } from "next-themes"
+import { Button } from "./Button"
 
-function SunIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function SunIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...props}>
       <path d="M12.5 10a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
@@ -13,7 +14,7 @@ function SunIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-function MoonIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function MoonIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...props}>
       <path d="M15.224 11.724a5.5 5.5 0 0 1-6.949-6.949 5.5 5.5 0 1 0 6.949 6.949Z" />
@@ -21,24 +22,21 @@ function MoonIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-export function ThemeToggle() {
+export function ThemeToggle(props: { className?: string; useText?: boolean }) {
   let { resolvedTheme, setTheme } = useTheme()
-  let otherTheme = resolvedTheme === 'dark' ? 'light' : 'dark'
+  let otherTheme = resolvedTheme === "dark" ? "light" : "dark"
   let [mounted, setMounted] = useState(false)
+  const label = mounted ? `Switch to ${otherTheme} theme` : "Toggle theme"
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
   return (
-    <button
-      type="button"
-      className="flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 dark:hover:bg-white/5"
-      aria-label={mounted ? `Switch to ${otherTheme} theme` : 'Toggle theme'}
-      onClick={() => setTheme(otherTheme)}
-    >
-      <SunIcon className="h-5 w-5 stroke-zinc-900 dark:hidden" />
-      <MoonIcon className="hidden h-5 w-5 stroke-white dark:block" />
-    </button>
+    <Button variant="outline" aria-label={label} onClick={() => setTheme(otherTheme)} className={props.className}>
+      {props.useText && <span>{label}</span>}
+      <SunIcon className="h-6 w-6 stroke-zinc-900 dark:hidden" />
+      <MoonIcon className="hidden h-6 w-6 stroke-white dark:block" />
+    </Button>
   )
 }

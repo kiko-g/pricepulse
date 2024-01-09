@@ -1,26 +1,20 @@
-'use client'
+"use client"
 
-import React, { Fragment, useState } from 'react'
-import Image from 'next/image'
-import type { Product, ProductResponse, StoreDetails } from '@/types'
-import {
-  BoltIcon,
-  EllipsisHorizontalCircleIcon,
-  GlobeAltIcon,
-  TrashIcon,
-} from '@heroicons/react/24/outline'
+import React, { Fragment, useState } from "react"
+import Image from "next/image"
+import type { Product, ProductResponse, StoreDetails } from "@/types"
+import { BoltIcon, EllipsisHorizontalCircleIcon, GlobeAltIcon, TrashIcon } from "@heroicons/react/24/outline"
 
-import { Layout } from '@/components/Layout'
-import { Menu, Transition } from '@headlessui/react'
+import { Layout } from "@/components/Layout"
+import { Menu, Transition } from "@headlessui/react"
 
 const exampleUrls = {
-  continente:
-    'https://www.continente.pt/produto/cereais-fitness-chocolate-preto-e-banana-fitness-7629683.html',
+  continente: "https://www.continente.pt/produto/cereais-fitness-chocolate-preto-e-banana-fitness-7629683.html",
 }
 
 export default function Sample() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [productUrl, setProductUrl] = useState<string>('')
+  const [productUrl, setProductUrl] = useState<string>("")
   const [product, setProduct] = useState<Product | null>(null)
   const [storeDetails, setStoreDetails] = useState<StoreDetails | null>(null)
 
@@ -41,14 +35,9 @@ export default function Sample() {
   return (
     <Layout>
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-center space-y-4 py-8">
-        <FindProduct
-          findProduct={findProduct}
-          productUrlHook={[productUrl, setProductUrl]}
-        />
+        <FindProduct findProduct={findProduct} productUrlHook={[productUrl, setProductUrl]} />
         {isLoading && <ProductSkeleton />}
-        {product !== null && storeDetails !== null && (
-          <ProductCard product={product} storeDetails={storeDetails} />
-        )}
+        {product !== null && storeDetails !== null && <ProductCard product={product} storeDetails={storeDetails} />}
       </div>
     </Layout>
   )
@@ -66,9 +55,7 @@ function FindProduct({
   return (
     <div className="flex w-full flex-col gap-y-4 rounded-lg border bg-gray-50 px-6 py-6">
       <div className="relative">
-        <h3 className="text-base font-semibold leading-6 text-gray-900">
-          Product URL
-        </h3>
+        <h3 className="text-base font-semibold leading-6 text-gray-900">Product URL</h3>
         <div className="mt-0.5 text-sm text-gray-500">
           <p>Enter the URL of the product from the website.</p>
         </div>
@@ -96,9 +83,7 @@ function FindProduct({
                   <Menu.Item>
                     {({ active }) => (
                       <div className="group flex w-full items-center gap-x-1.5 px-1">
-                        <span className="flex-1 text-sm text-gray-900">
-                          Continente
-                        </span>
+                        <span className="flex-1 text-sm text-gray-900">Continente</span>
                         <button
                           onClick={() => setProductUrl(exampleUrls.continente)}
                           className="flex items-center justify-start gap-1 rounded bg-gray-100 px-1 py-1 text-left text-sm transition hover:bg-gray-200 dark:bg-white/5 hover:dark:bg-white/10"
@@ -130,21 +115,18 @@ function FindProduct({
           <input
             type="text"
             value={productUrl}
-            onKeyDown={(e) => e.key === 'Enter' && findProduct()}
+            onKeyDown={(e) => e.key === "Enter" && findProduct()}
             onChange={(e) => setProductUrl(e.target.value)}
             placeholder="www.continente.pt"
             className="block h-full w-full flex-1 self-stretch rounded border-0 py-2 pr-8 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6 md:pr-10"
           />
 
-          {productUrl !== '' && (
+          {productUrl !== "" && (
             <button
               className="absolute inset-y-0 right-0 flex items-center pr-2 md:pr-3"
-              onClick={() => setProductUrl('')}
+              onClick={() => setProductUrl("")}
             >
-              <TrashIcon
-                className="h-5 w-5 text-gray-700 transition hover:opacity-70"
-                aria-hidden="true"
-              />
+              <TrashIcon className="h-5 w-5 text-gray-700 transition hover:opacity-70" aria-hidden="true" />
             </button>
           )}
         </div>
@@ -183,13 +165,7 @@ function ProductSkeleton() {
   )
 }
 
-function ProductCard({
-  product,
-  storeDetails,
-}: {
-  product: Product
-  storeDetails: StoreDetails
-}) {
+function ProductCard({ product, storeDetails }: { product: Product; storeDetails: StoreDetails }) {
   return (
     <div className="w-full rounded-lg border bg-gray-50 px-6 py-6">
       <div className="flex flex-col gap-4 md:flex-row">
@@ -205,12 +181,8 @@ function ProductCard({
         <div className="flex w-full flex-col justify-between">
           <div className="flex w-full flex-1 items-start gap-2">
             <div className="flex flex-1 flex-col">
-              <h4 className="text-lg font-semibold leading-6 text-gray-900">
-                {product.name}
-              </h4>
-              <p className="mt-1 text-sm font-medium text-gray-500">
-                {product.brand}
-              </p>
+              <h4 className="text-lg font-semibold leading-6 text-gray-900">{product.name}</h4>
+              <p className="mt-1 text-sm font-medium text-gray-500">{product.brand}</p>
               <p className="mt-0 text-sm text-gray-400">{product.single}</p>
             </div>
 

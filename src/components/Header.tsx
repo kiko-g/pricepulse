@@ -1,54 +1,35 @@
-'use client'
+"use client"
 
-import Link from 'next/link'
-import { Popover } from '@headlessui/react'
-import { AnimatePresence, motion } from 'framer-motion'
+import Link from "next/link"
+import { Popover } from "@headlessui/react"
+import { AnimatePresence, motion } from "framer-motion"
 
-import { Button } from '@/components/Button'
-import { Container } from '@/components/Container'
-import { Logo } from '@/components/Logo'
-import { NavLinks } from '@/components/NavLinks'
-import { ThemeToggle } from '@/components/ThemeToggle'
+import { Button } from "@/components/Button"
+import { Container } from "@/components/Container"
+import { Logo } from "@/components/Logo"
+import { NavLinks } from "@/components/NavLinks"
+import { ThemeToggle } from "@/components/ThemeToggle"
 
-function MenuIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function MenuIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M5 6h14M5 18h14M5 12h14"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M5 6h14M5 18h14M5 12h14" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
 
-function ChevronUpIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function ChevronUpIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M17 14l-5-5-5 5"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M17 14l-5-5-5 5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
 
 function MobileNavLink(
-  props: Omit<
-    React.ComponentPropsWithoutRef<typeof Popover.Button<typeof Link>>,
-    'as' | 'className'
-  >,
+  props: Omit<React.ComponentPropsWithoutRef<typeof Popover.Button<typeof Link>>, "as" | "className">,
 ) {
-  return (
-    <Popover.Button
-      as={Link}
-      className="block text-base leading-7 tracking-tight text-gray-700"
-      {...props}
-    />
-  )
+  return <Popover.Button as={Link} className="block text-base leading-7 tracking-tight text-gray-700" {...props} />
 }
 
 export function Header() {
@@ -72,13 +53,7 @@ export function Header() {
                     className="relative z-10 -m-2 inline-flex items-center rounded-lg stroke-gray-900 p-2 hover:bg-gray-200/50 hover:stroke-gray-600 active:stroke-gray-900 ui-not-focus-visible:outline-none"
                     aria-label="Toggle site navigation"
                   >
-                    {({ open }) =>
-                      open ? (
-                        <ChevronUpIcon className="h-6 w-6" />
-                      ) : (
-                        <MenuIcon className="h-6 w-6" />
-                      )
-                    }
+                    {({ open }) => (open ? <ChevronUpIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />)}
                   </Popover.Button>
                   <AnimatePresence initial={false}>
                     {open && (
@@ -104,23 +79,16 @@ export function Header() {
                           className="absolute inset-x-0 top-0 z-0 origin-top rounded-b-2xl bg-gray-50 px-6 pb-6 pt-32 shadow-2xl shadow-gray-900/20"
                         >
                           <div className="space-y-4">
-                            <MobileNavLink href="/#features">
-                              Features
-                            </MobileNavLink>
-                            <MobileNavLink href="/#reviews">
-                              Reviews
-                            </MobileNavLink>
-                            <MobileNavLink href="/#pricing">
-                              Pricing
-                            </MobileNavLink>
+                            <MobileNavLink href="/#features">Features</MobileNavLink>
+                            <MobileNavLink href="/#reviews">Reviews</MobileNavLink>
+                            <MobileNavLink href="/#pricing">Pricing</MobileNavLink>
                             <MobileNavLink href="/#faqs">FAQs</MobileNavLink>
                           </div>
-                          <div className="mt-8 flex flex-col gap-4">
-                            <ThemeToggle />
-                            <Button href="/login" variant="outline">
+                          <div className="pointer-events-auto mt-8 flex flex-col gap-4">
+                            <ThemeToggle className="block lg:hidden" useText />
+                            <Button href="/login" variant="solid" color="teal">
                               Log in
                             </Button>
-                            <Button href="#">Download the app</Button>
                           </div>
                         </Popover.Panel>
                       </>
@@ -129,13 +97,13 @@ export function Header() {
                 </>
               )}
             </Popover>
-            <ThemeToggle />
-            <Button href="/login" variant="outline" className="hidden lg:block">
-              Log in
-            </Button>
-            <Button href="#" color="gray" className="hidden lg:block">
-              Download
-            </Button>
+
+            <div className="pointer-events-auto flex items-center gap-x-4">
+              <ThemeToggle className="hidden lg:block" />
+              <Button href="/login" variant="solid" color="teal" className="hidden lg:block">
+                Log in
+              </Button>
+            </div>
           </div>
         </Container>
       </nav>
