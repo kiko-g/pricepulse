@@ -85,7 +85,6 @@ export function Header() {
                             <MobileNavLink href="/#faqs">FAQs</MobileNavLink>
                           </div>
                           <div className="pointer-events-auto mt-8 flex flex-col gap-4">
-                            <ThemeToggle className="block lg:hidden" useText />
                             <Button href="/login" variant="solid" color="teal">
                               Log in
                             </Button>
@@ -99,7 +98,6 @@ export function Header() {
             </Popover>
 
             <div className="pointer-events-auto flex items-center gap-x-4">
-              <ThemeToggle className="hidden lg:block" />
               <Button href="/login" variant="solid" color="teal" className="hidden lg:block">
                 Log in
               </Button>

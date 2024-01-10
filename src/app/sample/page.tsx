@@ -62,7 +62,7 @@ function FindProduct({
 
         <div className="absolute right-0 top-0 hidden md:block">
           <Menu>
-            <Menu.Button className="rounded-full transition hover:opacity-80 dark:bg-gray-800 dark:hover:bg-gray-700">
+            <Menu.Button className="rounded-full transition hover:opacity-80">
               <EllipsisHorizontalCircleIcon className="h-6 w-6 text-gray-700" />
             </Menu.Button>
 
@@ -86,14 +86,14 @@ function FindProduct({
                         <span className="flex-1 text-sm text-gray-900">Continente</span>
                         <button
                           onClick={() => setProductUrl(exampleUrls.continente)}
-                          className="flex items-center justify-start gap-1 rounded bg-gray-100 px-1 py-1 text-left text-sm transition hover:bg-gray-200 dark:bg-white/5 hover:dark:bg-white/10"
+                          className="flex items-center justify-start gap-1 rounded bg-gray-100 px-1 py-1 text-left text-sm transition hover:bg-gray-200"
                         >
                           <BoltIcon className="h-4 w-4" />
                         </button>
                         <a
                           href="www.continente.pt"
                           target="_blank"
-                          className="flex items-center justify-start gap-1 rounded bg-gray-100 px-1 py-1 text-left text-sm transition hover:bg-gray-200 dark:bg-white/5 hover:dark:bg-white/10"
+                          className="flex items-center justify-start gap-1 rounded bg-gray-100 px-1 py-1 text-left text-sm transition hover:bg-gray-200"
                         >
                           <GlobeAltIcon className="h-4 w-4" />
                         </a>

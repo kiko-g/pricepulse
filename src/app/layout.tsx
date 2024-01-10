@@ -22,14 +22,22 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const useThemes = false
+
   return (
     <html lang="en" className={clsx("h-full antialiased", inter.variable)} suppressHydrationWarning>
-      <body className="flex h-full flex-col bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-white">
-        <Providers>
+      <body className="flex h-full flex-col bg-gray-50 text-gray-800">
+        {useThemes ? (
+          <Providers>
+            <div className="flex min-h-full flex-col">
+              <Layout>{children}</Layout>
+            </div>
+          </Providers>
+        ) : (
           <div className="flex min-h-full flex-col">
             <Layout>{children}</Layout>
           </div>
-        </Providers>
+        )}
       </body>
     </html>
   )

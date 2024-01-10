@@ -5,3 +5,11 @@
 html {
   @apply scroll-smooth;
 }
+
+html {
+  @apply scroll-smooth;
+}
+
+*::selection {
+  @apply bg-teal-600/70 text-white;
+}

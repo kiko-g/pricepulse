@@ -185,14 +185,14 @@ export function Pricing() {
     <section
       id="pricing"
       aria-labelledby="pricing-title"
-      className="border-t border-gray-200 bg-gray-100 py-20 dark:border-transparent dark:bg-gray-900 sm:py-32"
+      className="border-t border-gray-200 bg-gray-100 py-20 sm:py-32"
     >
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <h2 id="pricing-title" className="text-3xl font-medium tracking-tight">
             Flat pricing, no management fees.
           </h2>
-          <p className="mt-2 text-lg text-gray-600 dark:text-gray-300">
+          <p className="mt-2 text-lg text-gray-600">
             Whether you’re one person trying to get ahead or a big firm trying to take over the world, we’ve got a plan
             for you.
           </p>
@@ -206,7 +206,7 @@ export function Pricing() {
                   key={period}
                   value={period}
                   className={clsx(
-                    "cursor-pointer border border-gray-300 px-[calc(theme(spacing.3)-1px)] py-[calc(theme(spacing.2)-1px)] text-sm text-gray-700 outline-2 outline-offset-2 transition-colors hover:border-gray-400 hover:bg-black/5 dark:text-gray-300 dark:hover:bg-teal-500/5",
+                    "cursor-pointer border border-gray-300 px-[calc(theme(spacing.3)-1px)] py-[calc(theme(spacing.2)-1px)] text-sm text-gray-700 outline-2 outline-offset-2 transition-colors hover:border-gray-400 hover:bg-black/5",
                     period === "Monthly" ? "rounded-l-lg" : "-ml-px rounded-r-lg",
                   )}
                 >
